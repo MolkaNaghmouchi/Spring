@@ -3,9 +3,8 @@ package com.example.firststep.entites;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,9 +16,10 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Moniteur {
+public class Moniteur implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long num_moniteur;
 
     private String nomM;

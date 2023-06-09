@@ -1,11 +1,10 @@
 package com.example.firststep.entites;
 
+import com.example.firststep.enu.Couleur;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -16,15 +15,15 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Cours {
+public class Cours implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long num_cour;
-    private String VERT;
 
-    private String BLEU;
-    private String ROUGE;
-    private String NOIR;
+    @Enumerated
+    private Couleur couleur;
+
     @OneToMany(mappedBy = "cours")
     private List<Inscription> inscrit;
 

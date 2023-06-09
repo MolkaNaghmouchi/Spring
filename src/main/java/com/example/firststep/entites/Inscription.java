@@ -2,10 +2,8 @@ package com.example.firststep.entites;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -16,11 +14,12 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Inscription {
+public class Inscription implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numInscription;
 private int numSemaine ;
-@ManyToOne
+@ManyToOne(cascade=CascadeType.PERSIST)
     private  Skieur skieur;
     @ManyToOne
     private  Cours cours;
